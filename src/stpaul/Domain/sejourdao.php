@@ -110,7 +110,7 @@ $db['db.options'] = array(
 
     private function getAllSejour(array $row) {
 
-        $sejour = new sejour();
+        $sejour =new sejour();
 
         $sejour->setSejno($row['Sejno']);
 

@@ -7,12 +7,31 @@
  */
 namespace stpaul\Domain;
 
+/**
+ * Class sejour
+ * @package stpaul\Domain
+ */
 class sejour{
 
+    /**
+     * @var
+     */
     private $sejno;
+    /**
+     * @var
+     */
     private $sejintitule;
+    /**
+     * @var
+     */
     private $sejMontantMBI;
+    /**
+     * @var
+     */
     private $sejDteDeb;
+    /**
+     * @var
+     */
     private $sejDuree;
 
 
@@ -98,6 +117,13 @@ class sejour{
     }
 
 
+    /**
+     * @param $sejno
+     * @param $sejintitule
+     * @param $sejMontantMBI
+     * @param $sejDteDeb
+     * @param $sejDuree
+     */
     function __construct($sejno, $sejintitule, $sejMontantMBI, $sejDteDeb, $sejDuree)
     {
         $this->sejno = $sejno;
