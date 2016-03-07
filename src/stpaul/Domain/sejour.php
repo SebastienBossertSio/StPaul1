@@ -5,7 +5,7 @@
  * Date: 07/03/2016
  * Time: 08:33
  */
-namespace stpaul/Domain;
+namespace stpaul\Domain;
 
 class sejour{
 

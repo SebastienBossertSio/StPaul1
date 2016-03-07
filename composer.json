@@ -10,6 +10,14 @@
     }
   ],
   "require": {
-    "silex/silex": "2.0.x-dev"
+    "silex/silex": "2.0.x-dev",
+    "doctrine/dbal": "2.4.x-dev"
   }
+,
+
+"autoload": {
+
+"psr-4": {"MicroCMS\\": "src"}
+
+}
 }
