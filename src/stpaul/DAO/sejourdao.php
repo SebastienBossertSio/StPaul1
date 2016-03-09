@@ -6,17 +6,15 @@
  * Time: 09:25
  */
 
-namespace stpaul\Domain;
+namespace stpaul\DAO;
+
+use Doctrine\DBAL\Connection;
+use stpaul\Domain\sejour;
+
 
 
 class sejourdao {
 
-
-
-
-    use Doctrine\DBAL\Connection;
-
-    use src\Domain\sejour;
 
 
     /**
@@ -44,16 +42,7 @@ class sejourdao {
 
     public function __construct(Connection $db) {
 
-// Doctrine (db)
-$db['db.options'] = array(
-    'driver'   => 'pdo_mysql',
-    'charset'  => 'utf8',
-    'host'     => 'localhost',
-    'port'     => '3306',
-    'dbname'   => 'bdstpaul',
-    'user'     => 'root',
-    'password' => '',
-);
+        $this->db = $db;
 
     }
 
@@ -78,18 +67,15 @@ $db['db.options'] = array(
 
         // Convert query result to an array of domain objects
 
-        $articles = array();
+        $sejours = array();
 
         foreach ($result as $row) {
 
-            $sejno = $row['Sejno'];
+            $SejNo = $row['SEJNO'];
 
-            $sejours[$sejno] = $this->getAllSejour($row);
+            $sejours[$SejNo] = $this->buildsejour($row);
 
         }
-
-
-
 
         return $sejours;
 
@@ -104,26 +90,18 @@ $db['db.options'] = array(
 
      * @param array $row The DB row containing Article data.
 
-     * @return \MicroCMS\Domain\Article
+     * @return stpaul\Domain\sejour
 
      */
 
-    private function getAllSejour(array $row) {
+    private function buildsejour(array $row) {
 
-        $sejour =new sejour();
+        $sejour = new sejour($row['SEJNO'],$row['SEJINTITULE'],$row['SEJMONTANTMBI'],$row['SEJINTITULE'], $row['SEJDUREE']);
 
-        $sejour->setSejno($row['Sejno']);
-
-        $sejour->setSejintitule($row['SejIntitule']);
-
-        $sejour->setSejMontantMBI($row['SejMontantMBI']);
-
-        $sejour->setSejDteDeb($row['SejDteDeb']);
-
-        $sejour->setSejDuree($row['SejDuree']);
 
         return $sejour;
 
     }
+
 
 }
