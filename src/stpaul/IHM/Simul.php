@@ -10,5 +10,19 @@ namespace src\stpaul\IHM;
 
 
 class Simul {
+private $famnom;
+    private $famNBEnfant;
+    private $famQF;
 
+    private $sejNo;
+    private $sejMBI;
+
+    private $simulNbEnfPartant;
+    private $simulReducQF;
+    private $simulReducFamilleNombreuse;
+    private $simulReducDepartMultiple;
+    private $simulSousTotal;
+    private $simulTotalApresReduc;
+    private $simulTotalApresPlafond;
+    private $simulTotalDepartMultiple;
 }
