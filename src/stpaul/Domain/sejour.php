@@ -129,9 +129,28 @@ class sejour{
         $this->sejno = $sejno;
         $this->sejintitule = $sejintitule;
         $this->sejMontantMBI = $sejMontantMBI;
-        $this->sejDteDeb = $sejDteDeb;
+        $this->sejDteDeb = new \DateTime($sejDteDeb);
         $this->sejDuree = $sejDuree;
     }
 
+    public function getSejDteFin()
+    {
+
+        $datetime = $this->sejDteDeb;
+        $datetime->add(new \DateInterval('P'.$this->sejDuree.'D'));
+
+        return $datetime->format('Y-m-d');
+    }
+
+    /**
+     * Formatage jj-mm-aaaa
+     * @param $pDte : date a formater
+     * @return mixed
+     */
+    public function getSejDteFormatFR($pDte)
+    {
+        $date = new \DateTime($pDte);
+        return $date->format('d-m-Y');
+    }
 
 }
