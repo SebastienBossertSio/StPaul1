@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <link href="../web/css/styly.css" rel="stylesheet" />
+    <div>require ('model.php')</div>
+    <title>SAINT PAUL DU TERRAY</title>
+</head>
+
+<body class="body">
+
+<main class="main">
+
+    <header-null class="header-null">
+        <header class="header">
+            <h1>SAINT PAUL DU TERRAY</h1>
+            <menu-null class="menu-null">
+                <div class="menu">
+                    <a href="#" class="menu_link">Index</a>
+                    <a href="#" class="menu_link">Manifestation</a>
+                    <a href="#" class="menu_link">Facturation</a>
+                    <a href="#" class="menu_link">Contact</a>
+                </div>
+            </menu-null>
+        </header>
+    </header-null>
+
+    <noscreen/>
+
+    <left class="left">
+        <h2>Simulation de coût d'un voyage pour un enfant :</h2>
+        <p>
+            Famille {} avec {} enfant(s) et un quotient familial de {} €
+            <br />{} enfant(s) partant en classe de découverte :
+            <br /><br />Prix brut du séjour individuel : {} €
+            <br />Réduction sur Quotient Familial 10% : {} €
+            <br />Réduction famille de 2 enfants 20% : {} €
+            <br /><br />Sous Total : {} €
+            <br /><br />Réduction départ de plusieurs enfants 10% : {} €
+            <br />Prix après réductions : {} €
+            <br /><br /> <b />Net à payer après plafonnement : {} €
+            <br /><br />Remarque : vous devez verser au total {} * {} = {} €
+        </p>
+        <br />
+    </left>
+
+    <noscreen/>
+
+    <right class="right">
+        <h2>Liste des séjours prévus </h2>
+        <fieldset>
+            <sejour >
+
+                {% for sejour in sejours %}
+
+                    <h2><p> {{ sejour.Sejintitule }} </p></h2>
+                    {{ sejour.SejMontantMBI }} € <BR/>
+                    A partir du {{ sejour.SejDteDeb }}
+                    {{ sejour.SejDuree}}  nuits
+                {% endfor %}
+            </sejour>
+
+        </fieldset>
+    </right>
+</main>
+
+<footer class="footer">
+    Copyright &copy; 2016 Saint paul du terray
+</footer>
+
+
+</body>
+
+</html>
+
