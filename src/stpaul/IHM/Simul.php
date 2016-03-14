@@ -10,8 +10,8 @@ namespace src\stpaul\IHM;
 
 
 class Simul {
-private $famnom;
-    private $famNBEnfant;
+private $famNom;
+    private $famNbEnfant;
     private $famQF;
 
     private $sejNo;
