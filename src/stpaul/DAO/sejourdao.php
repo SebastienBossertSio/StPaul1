@@ -102,6 +102,29 @@ class sejourdao {
         return $sejour;
 
     }
+    /**
+
+     * Return a list of all articles, sorted by date (most recent first).
+
+     *
+
+     * @return array A list of all articles.
+
+     */
+
+
+
+    //Retourne un  séjour
+    public function getSejour($pNo)
+    {
+        $sql = "select * from sejour where sejno=".$pNo;
+        $result = $this->db->fetchAssoc($sql);
+
+        return $this->buildSejour($result);
+
+    }
+    
+
 
 
 }
