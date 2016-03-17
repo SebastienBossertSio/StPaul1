@@ -115,7 +115,7 @@ class Simul {
 
         }else{
 
-            $this->simulReducQF  = 0;
+            $this->simulReducDepartMultiple  = 0;
         }
     }
 
@@ -146,9 +146,9 @@ class Simul {
     /**
      * @param mixed $simulTotalApresReduc
      */
-    public function setSimulTotalApresReduc($simulTotalApresReduc)
+    public function setSimulTotalApresReduc()
     {
-        $this->simulTotalApresReduc = $simulTotalApresReduc;
+        $this->simulTotalApresReduc =  $this->simulSousTotal - $this->simulReducDepartMultiple;
     }
 
     /**
