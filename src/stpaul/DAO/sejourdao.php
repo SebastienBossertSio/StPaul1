@@ -123,7 +123,8 @@ class sejourdao {
         return $this->buildSejour($result);
 
     }
-    
+
+
 
 
 
