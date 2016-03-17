@@ -58,9 +58,17 @@ class Simul {
     /**
      * @param mixed $simulReducQF
      */
-    public function setSimulReducQF($simulReducQF)
+    public function setSimulReducQF()
     {
-        $this->simulReducQF = $simulReducQF;
+        if ( $this->famQF < 500 ){
+
+               $this->simulReducQF = $this -> sejMBI * 0.1;
+
+    }else{
+
+            $this->simulReducQF  = 0;
+    }
+
     }
 
     /**
@@ -74,9 +82,18 @@ class Simul {
     /**
      * @param mixed $simulReducFamilleNombreuse
      */
-    public function setSimulReducFamilleNombreuse($simulReducFamilleNombreuse)
+    public function setSimulReducFamilleNombreuse()
     {
-        $this->simulReducFamilleNombreuse = $simulReducFamilleNombreuse;
+        if ( $this->famNbEnfant == 2 ){
+            $this -> simulReducFamilleNombreuse = $this -> sejMBI * 0.2;
+
+        }elseif ($this->famNbEnfant >= 3){
+            $this -> simulReducFamilleNombreuse = $this -> sejMBI * 0.4;
+
+    }else{
+
+        $this -> simulReducFamilleNombreuse = 0;
+    }
     }
 
     /**
@@ -90,9 +107,16 @@ class Simul {
     /**
      * @param mixed $simulReducDepartMultiple
      */
-    public function setSimulReducDepartMultiple($simulReducDepartMultiple)
+    public function setSimulReducDepartMultiple()
     {
-        $this->simulReducDepartMultiple = $simulReducDepartMultiple;
+        if ( $this->SimulNbEnfPartant > 1 ){
+
+            $this->simulReducDepartMultiple = $this -> sejMBI * 0.1;
+
+        }else{
+
+            $this->simulReducQF  = 0;
+        }
     }
 
     /**
@@ -100,7 +124,7 @@ class Simul {
      */
     public function getSimulSousTotal()
     {
-        return $this->simulSousTotal;
+         $this->simulSousTotal = ($this->simulSousTotal)-($this->simulReducFamilleNombreuse)-($this->simulReducQF);
     }
 
     /**
@@ -240,15 +264,17 @@ class Simul {
     }
 
     public function calcul()
-    {
-        $this->simulReducQF = 0;
-        $this->simulReducFamilleNombreuse = 0;
-        $this->simulReducDepartMultiple = 0;
-        $this->simulSousTotal  = 0;
-        $this->simulTotalApresReduc  = 0;
-        $this->simulTotalApresPlafond  = 0;
-        $this->simulTotalDepartMultiple = 0;
-    }
+{
+    $this->simulReducQF ;
+    $this->simulReducFamilleNombreuse  ;
+    $this->simulReducDepartMultiple ;
+    $this->simulSousTotal  ;
+    $this->simulTotalApresReduc  ;
+    $this->simulTotalApresPlafond  ;
+    $this->simulTotalDepartMultiple ;
+}
+
+
 
 }
 
