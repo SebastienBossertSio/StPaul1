@@ -124,15 +124,15 @@ class Simul {
      */
     public function getSimulSousTotal()
     {
-        $this->simulSousTotal = ($this->simulSousTotal)-($this->simulReducFamilleNombreuse)-($this->simulReducQF);
+        return $this->simulSousTotal;
     }
 
     /**
      * @param mixed $simulSousTotal
      */
-    public function setSimulSousTotal($simulSousTotal)
+    public function setSimulSousTotal()
     {
-        $this->simulSousTotal = $simulSousTotal;
+        $this->simulSousTotal = ($this->simulSousTotal)-($this->simulReducFamilleNombreuse)-($this->simulReducQF);
     }
 
     /**
@@ -164,7 +164,15 @@ class Simul {
      */
     public function setSimulTotalApresPlafond($simulTotalApresPlafond)
     {
-        $this->simulTotalApresPlafond = $simulTotalApresPlafond;
+        if ( $this->simulSousTotal > 100 ){
+
+            $this->simulTotalApresPlafond = 100 ;
+
+        }else{
+
+            $this->simulTotalApresPlafond = $this -> simulSousTotal;
+        }
+
     }
 
     /**
@@ -172,7 +180,7 @@ class Simul {
      */
     public function getSimulTotalDepartMultiple()
     {
-        return $this->simulTotalDepartMultiple;
+        return $this->$simulTotalDepartMultiple;
     }
 
     /**
@@ -180,7 +188,14 @@ class Simul {
      */
     public function setSimulTotalDepartMultiple($simulTotalDepartMultiple)
     {
-        $this->simulTotalDepartMultiple = $simulTotalDepartMultiple;
+        if ( $this->famNbEnfant > 1 ){
+
+            $this->simulTotalDepartMultiple = $this->simulSousTotal * $this->famNbEnfant ;
+
+        }else{
+
+            $this->simulTotalApresPlafond = $this -> simulSousTotal;
+        }
     }
 
     /**
