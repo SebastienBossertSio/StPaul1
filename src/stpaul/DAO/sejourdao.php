@@ -94,7 +94,8 @@ class sejourdao {
 
      */
 
-    private function buildsejour(array $row) {
+
+
 
         $sejour = new sejour($row['SEJNO'],$row['SEJINTITULE'],$row['SEJMONTANTMBI'],$row['SEJDTEDEB'], $row['SEJDUREE']);
 
