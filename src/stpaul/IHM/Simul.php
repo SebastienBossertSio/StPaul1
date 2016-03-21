@@ -26,8 +26,11 @@ class Simul {
     private $simulTotalApresPlafond;
     private $simulTotalDepartMultiple;
 
-    function __construct()
+    function __construct($famNbEnfant,$simulNbEnfPartant, $sejMBI, $famQF)
     {
+        $this->famNbEnfant = $famNbEnfant;
+        $this->simulNbEnfPartant = $simulNbEnfPartant;
+        $this->sejMBI = $sejMBI;
 
     }
 
@@ -68,7 +71,7 @@ class Simul {
 
             $this->simulReducQF  = 0;
         }
-
+       return $this->simulReducQF;
     }
 
     /**
@@ -162,7 +165,7 @@ class Simul {
     /**
      * @param mixed $simulTotalApresPlafond
      */
-    public function setSimulTotalApresPlafond($simulTotalApresPlafond)
+    public function setSimulTotalApresPlafond()
     {
         if ( $this->simulSousTotal > 100 ){
 
@@ -186,7 +189,7 @@ class Simul {
     /**
      * @param mixed $simulTotalDepartMultiple
      */
-    public function setSimulTotalDepartMultiple($simulTotalDepartMultiple)
+    public function setSimulTotalDepartMultiple()
     {
         if ( $this->famNbEnfant > 1 ){
 
