@@ -97,6 +97,7 @@ class Simul {
 
             $this -> simulReducFamilleNombreuse = 0;
         }
+        return $this -> simulReducFamilleNombreuse;
     }
 
     /**

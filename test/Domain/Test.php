@@ -30,4 +30,15 @@ class Test extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($resultatAttendu, $resultatObserve);
 
     }
+
+    public function testReducFamilleNombreuse()
+    {
+        $this->setUp(3, 2, 200,400);
+
+        $resultatAttendu = 80 ;
+        $resultatObserve = $this->object->setSimulReducFamilleNombreuse();
+
+        $this->assertEquals($resultatAttendu, $resultatObserve);
+
+    }
 }
