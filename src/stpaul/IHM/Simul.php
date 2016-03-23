@@ -26,7 +26,7 @@ class Simul {
     private $simulTotalApresPlafond;
     private $simulTotalDepartMultiple;
 
-    function __construct()
+    function __construct($famNbEnfant,$simulNbEnfPartant, $sejMBI, $famQF)
     {
 
     }
