@@ -26,9 +26,15 @@ class Simul {
     private $simulTotalApresPlafond;
     private $simulTotalDepartMultiple;
 
-    function __construct($famNbEnfant,$simulNbEnfPartant, $sejMBI, $famQF)
+    function __construct(/*$famNbEnfant,$simulNbEnfPartant, $sejMBI, $famQF*/)
     {
+      /*  $this->famNbEnfant = $famNbEnfant;
+        $this->simulNbEnfPartant = $simulNbEnfPartant;
+        $this->sejMBI = $sejMBI;
+        $this->famQF= $famQF;
 
+      Si tu veux faire fonctionner les tests remet les commentaires
+        */
     }
 
     /**
