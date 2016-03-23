@@ -29,91 +29,39 @@ class sejourdao {
 
     private $db;
 
-
-    /**
-
-     * Constructor
-
-     *
-
-     * @param \Doctrine\DBAL\Connection The database connection object
-
-     */
-
     public function __construct(Connection $db) {
 
         $this->db = $db;
 
     }
 
+    private function buildSejour($row) {
+        $sejour = new sejour($row['SEJNO'],$row['SEJINTITULE'],$row['SEJMONTANTMBI'], $row['SEJDTEDEB'] , $row['SEJDUREE']);
 
-    /**
+        /**  $sejour->setSejNo($row['SEJNO']);
+        $sejour->setSejIntitule($row['SEJINTITULE']);
+        $sejour->setSejMontantMBI($row['SEJMONTANTMBI']);
+        $sejour->setSejDteDeb($row['SEJDTEDEB']);
+        $sejour->setSejDuree($row['SEJDUREE']); */
+        return $sejour;
+    }
 
-     * Return a list of all articles, sorted by date (most recent first).
 
-     *
-
-     * @return array A list of all articles.
-
-     */
-
-    public function findAll() {
-
-        $sql = "select * from sejour ";
-
+//Retourne tous les séjours
+    public function getAllSejours()
+    {
+        $sql = "select * from sejour order by sejno";
         $result = $this->db->fetchAll($sql);
 
-
-
-        // Convert query result to an array of domain objects
-
+        // Convert query result to an array of SEJOUR objects
         $sejours = array();
-
         foreach ($result as $row) {
-
-            $SejNo = $row['SEJNO'];
-
-            $sejours[$SejNo] = $this->buildsejour($row);
-
+            $sejNo = $row['SEJNO'];
+            $sejours[$sejNo] = $this->buildSejour($row);
         }
-
         return $sejours;
 
     }
-
-
-    /**
-
-     * Creates an Article object based on a DB row.
-
-     *
-
-     * @param array $row The DB row containing Article data.
-
-     * @return stpaul\Domain\sejour
-
-     */
-
-
-
-
-        $sejour = new sejour($row['SEJNO'],$row['SEJINTITULE'],$row['SEJMONTANTMBI'],$row['SEJDTEDEB'], $row['SEJDUREE']);
-
-
-        return $sejour;
-
-    }
-    /**
-
-     * Return a list of all articles, sorted by date (most recent first).
-
-     *
-
-     * @return array A list of all articles.
-
-     */
-
-
 
     //Retourne un  séjour
     public function getSejour($pNo)
@@ -124,6 +72,11 @@ class sejourdao {
         return $this->buildSejour($result);
 
     }
+
+
+
+
+
 
 
 

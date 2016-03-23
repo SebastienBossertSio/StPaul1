@@ -8,9 +8,10 @@ use stpaul\Form\Type\SimulType;
 
 // Home page
 $app->get('/', function () use ($app) {
-$sejours = $app['dao.sejour']->findAll();
 
-return $app['twig']->render('index.html.twig', array('sejours' => $sejours));
+    $sejours = $app['dao.sejour']->getAllSejours();
+    return $app['twig']->render('index.html.twig', array('sejours' => $sejours));
+
 });
 
 

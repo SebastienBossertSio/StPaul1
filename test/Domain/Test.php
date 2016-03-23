@@ -84,4 +84,14 @@ class Test extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($resultatAttendu, $resultatObserve);
 
     }
+    public function testSimulTotalDepartMultiple()
+    {
+        $this->setUp(3, 2, 200,400);
+
+        $resultatAttendu = 160 ;
+        $resultatObserve = $this->object->setSimulTotalDepartMultiple();
+
+        $this->assertEquals($resultatAttendu, $resultatObserve);
+
+    }
 }
