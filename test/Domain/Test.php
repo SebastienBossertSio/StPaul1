@@ -41,4 +41,47 @@ class Test extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($resultatAttendu, $resultatObserve);
 
     }
+
+    public function testReducDepartMultiple()
+    {
+        $this->setUp(3, 2, 200,400);
+
+        $resultatAttendu = 20 ;
+        $resultatObserve = $this->object->setSimulReducDepartMultiple();
+
+        $this->assertEquals($resultatAttendu, $resultatObserve);
+
+    }
+
+    public function testSimulSousTotal()
+    {
+        $this->setUp(3, 2, 200,400);
+
+        $resultatAttendu = 100 ;
+        $resultatObserve = $this->object->setSimulSousTotal();
+
+        $this->assertEquals($resultatAttendu, $resultatObserve);
+
+    }
+
+	public function testSimulTotalApresReduc()
+    {
+        $this->setUp(3, 2, 200,400);
+
+        $resultatAttendu = 80 ;
+        $resultatObserve = $this->object->setSimulTotalApresReduc();
+
+        $this->assertEquals($resultatAttendu, $resultatObserve);
+
+    }
+	public function testSimulTotalApresPlafond()
+    {
+        $this->setUp(3, 2, 200,400);
+
+        $resultatAttendu = 80 ;
+        $resultatObserve = $this->object->setSimulTotalApresPlafond();
+
+        $this->assertEquals($resultatAttendu, $resultatObserve);
+
+    }
 }

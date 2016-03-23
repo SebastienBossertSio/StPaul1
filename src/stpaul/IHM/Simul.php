@@ -31,6 +31,7 @@ class Simul {
         $this->famNbEnfant = $famNbEnfant;
         $this->simulNbEnfPartant = $simulNbEnfPartant;
         $this->sejMBI = $sejMBI;
+        $this->famQF= $famQF;
 
     }
 
@@ -71,6 +72,7 @@ class Simul {
 
             $this->simulReducQF  = 0;
         }
+
        return $this->simulReducQF;
     }
 
@@ -93,11 +95,12 @@ class Simul {
         }elseif ($this->famNbEnfant >= 3){
             $this -> simulReducFamilleNombreuse = $this -> sejMBI * 0.4;
 
-        }else{
+        }else {
 
-            $this -> simulReducFamilleNombreuse = 0;
+            $this->simulReducFamilleNombreuse = 0;
         }
-        return $this -> simulReducFamilleNombreuse;
+
+		 return $this->simulReducFamilleNombreuse;
     }
 
     /**
@@ -113,7 +116,7 @@ class Simul {
      */
     public function setSimulReducDepartMultiple()
     {
-        if ( $this->SimulNbEnfPartant > 1 ){
+        if ( $this->simulNbEnfPartant > 1 ){
 
             $this->simulReducDepartMultiple = $this -> sejMBI * 0.1;
 
@@ -121,6 +124,8 @@ class Simul {
 
             $this->simulReducDepartMultiple  = 0;
         }
+
+        return $this->simulReducDepartMultiple;
     }
 
     /**
@@ -136,7 +141,8 @@ class Simul {
      */
     public function setSimulSousTotal()
     {
-        $this->simulSousTotal = ($this->simulSousTotal)-($this->simulReducFamilleNombreuse)-($this->simulReducQF);
+        $this->simulSousTotal = ($this->sejMBI) - $this->setSimulReducFamilleNombreuse()- $this->setSimulReducQF();
+        return  $this->simulSousTotal;
     }
 
     /**
@@ -152,7 +158,8 @@ class Simul {
      */
     public function setSimulTotalApresReduc()
     {
-        $this->simulTotalApresReduc =  $this->simulSousTotal - $this->simulReducDepartMultiple;
+        $this->simulTotalApresReduc =  $this->SetsimulSousTotal() - $this->SetsimulReducDepartMultiple();
+		return $this->simulTotalApresReduc;
     }
 
     /**
@@ -168,15 +175,15 @@ class Simul {
      */
     public function setSimulTotalApresPlafond()
     {
-        if ( $this->simulSousTotal > 100 ){
+        if ( $this->setsimulTotalApresReduc() > 100 ){
 
             $this->simulTotalApresPlafond = 100 ;
 
         }else{
 
-            $this->simulTotalApresPlafond = $this -> simulSousTotal;
+            $this->simulTotalApresPlafond = $this -> setsimulTotalApresReduc();
         }
-
+			        return $this->simulTotalApresPlafond;
     }
 
     /**
@@ -200,6 +207,8 @@ class Simul {
 
             $this->simulTotalApresPlafond = $this -> simulSousTotal;
         }
+		
+		return $this->$simulTotalDepartMultiple;
     }
 
     /**
