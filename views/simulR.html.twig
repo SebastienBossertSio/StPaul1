@@ -49,12 +49,22 @@
         <h2>Votre simulation </h2>
         <fieldset>
             <sejour>
-                <h2><p>
-                {{ 'Famille '~simul.famNom }} </p></h2>
-                {{ sejour.SejIntitule }} </p></h2>
-                {{ sejour.SejMontantMBI~'€' }} <BR/>
+                {{ 'Famille '~simul.famNom~' avec '~simul.famNbEnfant~' enfant(s) et un quotient familial de '~simul.famQF~'€' }} </p>
+                {{ simul.simulNbEnfPartant~' enfant(s) partant en '~sejour.sejintitule }} </p></h2>
 
-                {{ simul.simulReducQF~'€' }} <BR/>
+
+                {{ 'Prix brut du séjour individuel: '~sejour.sejMontantMBI~'€' }} <br />
+                {{ 'Réduction sur Quotient Familial 10%: -'~simul.setsimulReducQF()~'€' }}<br />
+                {{ 'Réduction famille par rapport au nombre d\'enfant: -'~simul.setSimulReducFamilleNombreuse()~'€' }}<br /> <br />
+
+                {{ 'Sous Total: '~simul.setsimulSousTotal()~'€' }}<br /><br />
+
+                {{ 'Réduction départ de plusieurs enfants 10%: '~simul.setsimulReducDepartMultiple()~'€' }} <br />
+                {{ 'Prix après réductions: '~simul.setsimulTotalApresReduc()~'€' }}<br /><br />
+
+                <b>{{ 'Net à payer après plafonnement: '~simul.setsimulTotalApresPlafond()~'€' }}</b><br /><br />
+
+                {{ 'Remarque : vous devrez verser au total '~simul.setsimulTotalApresPlafond()~'*'~simul.simulNbEnfPartant~'='~simul.setsimulTotalDepartMultiple }}
 
 
             </sejour>
