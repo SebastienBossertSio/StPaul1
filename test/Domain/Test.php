@@ -20,6 +20,30 @@ class Test extends \PHPUnit_Framework_TestCase {
         $this->object = new Simul(3, 2, 200,400);
     }
 
+    public function testPartFiscale()
+    {
+        $this->setUp(3, 2, 200,400);
+
+        $resultatAttendu = 4 ;
+        $resultatObserve = $this->object->setPartFiscale();
+
+        $this->assertEquals($resultatAttendu, $resultatObserve);
+
+    }
+
+    public function testQF()
+    {
+        $this->setUp(3, 2, 200,400);
+
+        $resultatAttendu = 9;
+        $resultatObserve = $this->object->setFamQF();
+
+        $this->assertEquals($resultatAttendu, $resultatObserve);
+
+    }
+
+
+
     public function testReducQF()
     {
         $this->setUp(3, 2, 200,400);

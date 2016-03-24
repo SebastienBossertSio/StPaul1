@@ -12,6 +12,8 @@ namespace stpaul\IHM;
 class Simul {
     private $famNom;
     private $famNbEnfant;
+    private $RevenuFiscale;
+    Private $PartFiscale;
     private $famQF;
 
     private $sejNo;
@@ -26,20 +28,87 @@ class Simul {
     private $simulTotalApresPlafond;
     private $simulTotalDepartMultiple;
 
-    function __construct(/*$famNbEnfant,$simulNbEnfPartant, $sejMBI, $famQF*/)
+    function __construct($famNbEnfant,$simulNbEnfPartant, $sejMBI, $RevenuFiscale )
     {
-      /*  $this->famNbEnfant = $famNbEnfant;
+      $this->famNbEnfant = $famNbEnfant;
         $this->simulNbEnfPartant = $simulNbEnfPartant;
         $this->sejMBI = $sejMBI;
-        $this->famQF= $famQF;
+        $this->RevenuFiscale= $RevenuFiscale;
 
-      Si tu veux faire fonctionner les tests remet les commentaires
-        */
+
+
     }
 
     /**
      * @return mixed
+     *
+     *
      */
+
+    public function getFamQF()
+    {
+        return $this->famQF;
+    }
+
+    /**
+     * @param mixed $famQF
+     */
+    public function setFamQF()
+    {
+        $this -> FamQF = $this -> RevenuFiscale / (12 * $this->setPartFiscale() );
+        return ceil ($this ->FamQF);
+    }
+
+
+
+    public function getRevenuFiscale()
+    {
+        return $this->RevenuFiscale;
+    }
+
+    /**
+     * @param mixed $simulNbEnfPartant
+     */
+    public function setRevenuFiscale($RevenuFiscale)
+    {
+        $this->RevenuFiscale= $RevenuFiscale;
+    }
+
+
+    public function getPartFiscale()
+    {
+        return $this->PartFiscale;
+    }
+
+    /**
+     * @param mixed $simulNbEnfPartant
+     */
+    public function setPartFiscale()
+    {
+        if($this -> famNbEnfant==1){
+
+            $this->PartFiscale = 2.5;
+
+        }elseif($this -> famNbEnfant==2){
+
+            $this->PartFiscale = 3;
+        }
+        elseif($this -> famNbEnfant==3){
+
+            $this->PartFiscale = 4;
+        }
+        elseif($this -> famNbEnfant==4){
+
+            $this->PartFiscale = 5;
+        }
+        elseif($this -> famNbEnfant==5){
+
+            $this->PartFiscale = 6;
+        }
+
+        return $this->PartFiscale;
+    }
+
     public function getSimulNbEnfPartant()
     {
         return $this->simulNbEnfPartant;
@@ -66,9 +135,9 @@ class Simul {
      */
     public function setSimulReducQF()
     {
-        if ( $this->famQF < 500 ){
+        if ( $this->setFamQF() < 500 ){
 
-            $this->simulReducQF = $this -> sejMBI * 0.1;
+            $this->simulReducQF = ($this -> sejMBI) * 0.1;
 
         }else{
 
@@ -248,18 +317,7 @@ class Simul {
     /**
      * @return mixed
      */
-    public function getFamQF()
-    {
-        return $this->famQF;
-    }
 
-    /**
-     * @param mixed $famQF
-     */
-    public function setFamQF($famQF)
-    {
-        $this->famQF = $famQF;
-    }
 
     /**
      * @return mixed
@@ -295,13 +353,15 @@ class Simul {
 
     public function calcul()
     {
-        $this->simulReducQF ;
-        $this->simulReducFamilleNombreuse  ;
-        $this->simulReducDepartMultiple ;
-        $this->simulSousTotal  ;
-        $this->simulTotalApresReduc  ;
-        $this->simulTotalApresPlafond  ;
-        $this->simulTotalDepartMultiple ;
+        $this -> setPartFiscale();
+        $this -> setFamQF();
+        $this-> setsimulReducQF() ;
+        $this-> setsimulReducFamilleNombreuse()  ;
+        $this-> setsimulReducDepartMultiple() ;
+        $this-> setsimulSousTotal()  ;
+        $this-> setsimulTotalApresReduc()  ;
+        $this-> setsimulTotalApresPlafond()  ;
+        $this-> setsimulTotalDepartMultiple() ;
     }
 
 
